@@ -47,3 +47,21 @@
     flex-direction: column;
     text-align: left;
 }
+
+#routines-div{
+    display: flex;
+    flex-direction: row;
+}
+
+#trainingLibrary{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    flex-wrap: wrap;
+}
+#exercisesDiv{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    flex-wrap: wrap;
+}

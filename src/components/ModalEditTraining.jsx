@@ -3,7 +3,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
-import {createTrainingService, exerciseDetailsService, updateTrainingService} from "../services/exercises.services.js"
+import {createTrainingService, deleteTrainingService, exerciseDetailsService, updateTrainingService} from "../services/exercises.services.js"
+import { Navigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -47,6 +48,14 @@ function ModalEditTraining(props) {
     }
   }
 
+  const handleDeleteTraining = async (e) => {
+    e.preventDefault()
+    try {
+      await deleteTrainingService(trainingId)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const handleUpdateTraining = async (e) => {
     e.preventDefault();
@@ -57,6 +66,7 @@ function ModalEditTraining(props) {
     };
     try {
         await updateTrainingService(updateTraining, trainingId)
+        Navigate("/ejercicios");
     } catch (error) {
         console.log(error)
     }
@@ -111,6 +121,11 @@ function ModalEditTraining(props) {
 
                 
               </div>
+            </form>
+            <form onSubmit={handleDeleteTraining}>
+            <Button type="submit" variant="contained">
+                  Eliminar entrenamiento
+                </Button>
             </form>
           </div>
         </Box>

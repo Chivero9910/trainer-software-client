@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import {createTrainingService} from "../services/exercises.services.js"
+import { Navigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -39,6 +40,7 @@ function ModalTraining() {
     };
     try {
         await createTrainingService(newTraining)
+        Navigate("/ejercicios");
     } catch (error) {
         console.log(error)
     }

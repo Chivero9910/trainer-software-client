@@ -6,7 +6,7 @@ import Modal from "@mui/material/Modal";
 import { TextField } from "@mui/material";
 import { AuthContext } from "../context/auth.context";
 import ModalEditTraining from "./ModalEditTraining";
-import { createRoutineService, trainingsListService } from "../services/exercises.services";
+import { createRoutineService, getRoutineService, trainingsListService } from "../services/exercises.services";
 import { height } from "@mui/system";
 import { useParams } from "react-router-dom";
 
@@ -24,8 +24,7 @@ const style = {
   overflowY: "scroll",
 };
 
-export default function ModalAddRoutine(props) {
-  const { clientId } = useParams;
+export default function ModalEditRoutine(props) {
 
   const [list, setList] = React.useState([]);
   const [exercises, setExercises] = React.useState([]);
@@ -44,6 +43,8 @@ export default function ModalAddRoutine(props) {
 
   React.useEffect(() => {
     getData();
+    moreData()
+    console.log(props)
 
   }, [exercises]);
 
@@ -55,6 +56,15 @@ export default function ModalAddRoutine(props) {
       console.log(error);
     }
   };
+
+  const moreData = async () => {
+    try {
+        const response = await getRoutineService(props.id)
+        setExercises(response.data.trainings)
+    } catch (error) {
+        console.log(error)
+    }
+  }
 
   const handleAddToRoutine = (eachTraining) => {
     setExercises([...exercises, eachTraining]);
@@ -85,7 +95,7 @@ export default function ModalAddRoutine(props) {
 
   return (
     <div className="modal-body">
-      <Button onClick={handleOpen}>Añadir un entrenamiento</Button>
+      <Button onClick={handleOpen}>Editar rutina</Button>
       <Modal
         open={open}
         onClose={handleClose}

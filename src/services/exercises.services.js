@@ -17,6 +17,22 @@ const updateTrainingService = (updateTraining, trainingId) => {
 } 
 
 
+const deleteTrainingService = (trainingId) => {
+    return service.delete(`/exercise/${trainingId}`)
+}
+
+const createRoutineService = (newRoutine, clientId) => {
+    return service.post(`/routine/create/${clientId}`, newRoutine)
+}
+
+const getRoutinesService = (clientId) => {
+    return service.get(`/routine/${clientId}`)
+}
+
+const getRoutineService = (routineId) => {
+    return service.get(`/routine/routines/${routineId}`)
+}
+
 
 
 
@@ -25,5 +41,9 @@ export {
     trainingsListService,
     createTrainingService,
     exerciseDetailsService,
-    updateTrainingService
+    updateTrainingService,
+    deleteTrainingService,
+    createRoutineService,
+    getRoutinesService,
+    getRoutineService
 }
