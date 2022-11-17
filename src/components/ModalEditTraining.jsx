@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
-import {createTrainingService, deleteTrainingService, exerciseDetailsService, updateTrainingService} from "../services/exercises.services.js"
+import {deleteTrainingService, exerciseDetailsService, updateTrainingService} from "../services/exercises.services.js"
 import { Navigate } from "react-router-dom";
 
 const style = {
@@ -52,6 +52,8 @@ function ModalEditTraining(props) {
     e.preventDefault()
     try {
       await deleteTrainingService(trainingId)
+      setOpen(false)
+        props.trainingData()
     } catch (error) {
       console.log(error)
     }
@@ -66,14 +68,15 @@ function ModalEditTraining(props) {
     };
     try {
         await updateTrainingService(updateTraining, trainingId)
-        Navigate("/ejercicios");
+        setOpen(false)
+        props.trainingData()
     } catch (error) {
         console.log(error)
     }
 }
   return (
     <div>
-      <Button onClick={handleOpen}>Editar entrenamiento</Button>
+      <Button onClick={handleOpen}>Editar ejercicio</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -116,7 +119,7 @@ function ModalEditTraining(props) {
                   onChange={handlevideoUrlChange}
                 />
                  <Button type="submit" variant="contained">
-                  Actualizar entrenamiento
+                  Actualizar ejercicio
                 </Button>
 
                 
@@ -124,7 +127,7 @@ function ModalEditTraining(props) {
             </form>
             <form onSubmit={handleDeleteTraining}>
             <Button type="submit" variant="contained">
-                  Eliminar entrenamiento
+                  Eliminar ejercicio
                 </Button>
             </form>
           </div>

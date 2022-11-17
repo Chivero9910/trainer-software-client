@@ -26,7 +26,7 @@ function Exercises() {
   return (
     <div>
       <NavbarTrainer />
-      <ModalTraining />
+      <ModalTraining trainingData={getData}/>
       <div>
         {list.map((eachTraining) => {
           return (
@@ -42,7 +42,7 @@ function Exercises() {
     />
               <h3>{eachTraining.name}</h3>
               <p>{eachTraining.instructions}</p>
-              <ModalEditTraining trainingId={eachTraining._id}/>
+              <ModalEditTraining trainingId={eachTraining._id} trainingData={getData}/>
             </div>
           );
         })}

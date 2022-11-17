@@ -1,10 +1,9 @@
-import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ModalAddRoutine from "../components/ModalAddRoutine";
 import ModalEditRoutine from "../components/ModalEditRoutine";
+import ModalGetMetrics from "../components/ModalGetMetrics";
 import NavbarTrainer from "../components/NavbarTrainer";
-import { clientDetailsService } from "../services/clients.services";
 import { getRoutinesService } from "../services/exercises.services";
 
 function ClientsDetails(props) {
@@ -29,7 +28,8 @@ function ClientsDetails(props) {
   return (
     <div>
       <NavbarTrainer />
-      <ModalAddRoutine id={clientId} />
+      <ModalAddRoutine id={clientId} dataRoutine={getData} />
+      <ModalGetMetrics id={clientId}/>
       <div>
         {list.map((eachRoutine) => {
           return (
@@ -54,7 +54,7 @@ function ClientsDetails(props) {
                 );
               })}
               
-              <ModalEditRoutine id={eachRoutine._id} />
+              <ModalEditRoutine id={eachRoutine._id} dataRoutine={getData}/>
             </div>
           );
         })}
@@ -64,3 +64,5 @@ function ClientsDetails(props) {
 }
 
 export default ClientsDetails;
+
+

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { signupServiceTrainer } from "../services/auth.services";
 import { TextField } from "@mui/material";
 import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
+
 
 const style = {
   position: "absolute",
@@ -61,7 +61,7 @@ function ModalTrainer() {
       const response = await signupServiceTrainer(newUser);
       localStorage.setItem("authToken", response.data.authToken);
       authenticateUser();
-      navigate("/profile");
+      navigate("/");
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);

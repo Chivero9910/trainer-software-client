@@ -1,14 +1,9 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { TextField } from "@mui/material";
-import { AuthContext } from "../context/auth.context";
-import ModalEditTraining from "./ModalEditTraining";
-import { createRoutineService, getRoutineService, trainingsListService } from "../services/exercises.services";
-import { height } from "@mui/system";
-import { useParams } from "react-router-dom";
+import { deleteRoutineService, getRoutineService, trainingsListService, updateRoutineService } from "../services/exercises.services";
 
 const style = {
   position: "absolute",
@@ -41,12 +36,12 @@ export default function ModalEditRoutine(props) {
   const handleDateChange = (e) => setDate(e.target.value);
   const handleDescriptionChange = (e) => setDescription(e.target.value);
 
-  React.useEffect(() => {
-    getData();
-    moreData()
-    console.log(props)
 
-  }, [exercises]);
+ React.useEffect(() => {
+    moreData()
+    getData()
+ }, [])
+
 
   const getData = async () => {
     try {
@@ -60,34 +55,52 @@ export default function ModalEditRoutine(props) {
   const moreData = async () => {
     try {
         const response = await getRoutineService(props.id)
+        setName(response.data.name)
+        setDate(response.data.date)
+        setDescription(response.data.description)
         setExercises(response.data.trainings)
+        console.log(response.data.trainings);
     } catch (error) {
         console.log(error)
     }
+  }
+
+  const handleDeleteRoutine = async (e) => {
+    e.preventDefault()
+    try {
+        await deleteRoutineService(props.id)
+        setOpen(false)
+        props.dataRoutine()
+    } catch (error) {
+        console.log(error);
+    }
+   
   }
 
   const handleAddToRoutine = (eachTraining) => {
     setExercises([...exercises, eachTraining]);
   };
 
-  const handleDeleteFromRoutine = (index) => {
-    setExercises([exercises.pull(index)]);
+  const handleDeleteFromRoutine = (eachExercise) => {
+    setExercises([...exercises].filter(((exercises) => exercises._id !== eachExercise._id)));
   };
 
-    const handleCreateRoutine = async (e) => {
+    const handleUpdateRoutine = async (e) => {
       e.preventDefault();
       const trainings = exercises.map((eachExercise) => {
         return eachExercise._id
       })
       console.log(props)
-      const newRoutine = {
+      const updateRoutine = {
         name,
         description,
         trainings: trainings,
         date
       };
       try {
-        await createRoutineService(newRoutine, props.id)
+        await updateRoutineService(updateRoutine, props.id)
+        setOpen(false)
+        props.dataRoutine()
       } catch (error) {
         console.log(error)
       }
@@ -137,11 +150,12 @@ export default function ModalEditRoutine(props) {
                   onChange={handleDateChange}
                 />
               </div>
-              <Button onClick={handleCreateRoutine}>Crear rutina</Button>
+              <Button onClick={handleUpdateRoutine}>Actualizar rutina</Button>
+              <Button onClick={handleDeleteRoutine}>Eliminar rutina</Button>
             </form>
             <div id="routines-div">
             <div id="exercisesDiv">
-              {exercises.map((eachExercise, index) => {
+              {exercises.map((eachExercise) => {
                 return (
                   <div className="exercises" key={eachExercise._id}>
                     <iframe
@@ -154,7 +168,7 @@ export default function ModalEditRoutine(props) {
                       title="Embedded youtube"
                     />
                     <h3>{eachExercise.name}</h3>
-                    <Button onClick={() => handleDeleteFromRoutine(index)}>Eliminar de la rutina</Button>
+                    <Button onClick={() => handleDeleteFromRoutine(eachExercise)}>Eliminar de la rutina</Button>
                   </div>
                 );
               })}

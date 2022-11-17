@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
@@ -17,7 +17,7 @@ const style = {
   p: 4,
 };
 
-function ModalTraining() {
+function ModalTraining(props) {
 
 
   const [open, setOpen] = useState(false);
@@ -40,7 +40,8 @@ function ModalTraining() {
     };
     try {
         await createTrainingService(newTraining)
-        Navigate("/ejercicios");
+        setOpen(false)
+        props.trainingData()
     } catch (error) {
         console.log(error)
     }
@@ -48,7 +49,7 @@ function ModalTraining() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Añadir un entrenamiento</Button>
+      <Button onClick={handleOpen}>Añadir un ejercicio</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -91,7 +92,7 @@ function ModalTraining() {
                   onChange={handlevideoUrlChange}
                 />
                  <Button type="submit" variant="contained">
-                  Editar entrenamiento
+                  Añadir ejercicio
                 </Button>
 
                 

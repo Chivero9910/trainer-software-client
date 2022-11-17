@@ -21,6 +21,7 @@ function AuthWrapper(props){
             setIsLoggedIn(true)
             setUser(response.data)
             setIsFetching(false)
+            return response
         } catch (error) {
             setIsLoggedIn(false)
             setUser(null)

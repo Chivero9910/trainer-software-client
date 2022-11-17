@@ -29,8 +29,20 @@ const getRoutinesService = (clientId) => {
     return service.get(`/routine/${clientId}`)
 }
 
+const getRoutineProfileService = () => {
+    return service.get("/routine/client")
+}
+
 const getRoutineService = (routineId) => {
     return service.get(`/routine/routines/${routineId}`)
+}
+
+const deleteRoutineService = (routineId) => {
+    return service.delete(`/routine/delete/${routineId}`)
+}
+
+const updateRoutineService = (updateRoutine, routineId) => {
+    return service.patch(`/routine/update/${routineId}`, updateRoutine)
 }
 
 
@@ -45,5 +57,8 @@ export {
     deleteTrainingService,
     createRoutineService,
     getRoutinesService,
-    getRoutineService
+    getRoutineService,
+    deleteRoutineService,
+    updateRoutineService,
+    getRoutineProfileService
 }

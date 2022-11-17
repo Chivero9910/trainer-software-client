@@ -1,14 +1,9 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { TextField } from "@mui/material";
-import { AuthContext } from "../context/auth.context";
-import ModalEditTraining from "./ModalEditTraining";
 import { createRoutineService, trainingsListService } from "../services/exercises.services";
-import { height } from "@mui/system";
-import { useParams } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -25,7 +20,6 @@ const style = {
 };
 
 export default function ModalAddRoutine(props) {
-  const { clientId } = useParams;
 
   const [list, setList] = React.useState([]);
   const [exercises, setExercises] = React.useState([]);
@@ -44,8 +38,7 @@ export default function ModalAddRoutine(props) {
 
   React.useEffect(() => {
     getData();
-
-  }, [exercises]);
+  }, []);
 
   const getData = async () => {
     try {
@@ -78,6 +71,8 @@ export default function ModalAddRoutine(props) {
       };
       try {
         await createRoutineService(newRoutine, props.id)
+        setOpen(false)
+        props.dataRoutine()
       } catch (error) {
         console.log(error)
       }

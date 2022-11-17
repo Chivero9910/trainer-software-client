@@ -31,7 +31,7 @@ function Home() {
 
       localStorage.setItem("authToken", response.data.authToken);
       authenticateUser();
-      navigate("/profile");
+      navigate("/clients");
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);
@@ -44,7 +44,7 @@ function Home() {
   return (
     <div id="home-main-container">
       <div id="home-container-izq">
-        <h1>Texto</h1>
+        <h1>Da tu mejor versión con <span> TrainApp 💪🏆</span></h1>
       </div>
 
       <div id="home-container-der">
@@ -57,39 +57,41 @@ function Home() {
             <ModalTrainer />
           </div>
         </div>
-        <div id="home-form-signin">
-          <h2>Inicia sesión</h2>
-          <h3>
-            Ahora entrenar, <span>cuesta menos 🚀</span>
-          </h3>
-          <form onSubmit={handleLogin}>
-            <TextField
-              id="outlined-basic"
-              margin="normal"
-              size="small"
-              type="email"
-              label="Email"
-              variant="outlined"
-              value={email}
-              onChange={handleEmailChange}
-            />
-            <TextField
-              id="outlined-basic"
-              margin="normal"
-              size="small"
-              type="password"
-              label="Contraseña"
-              variant="outlined"
-              value={password}
-              onChange={handlePasswordChange}
-            />
+        <div id="container-home-main">
+          <div id="home-form-signin">
+            <h2>Inicia sesión</h2>
+            <h3>
+              Ahora entrenar, <span>cuesta menos 🚀</span>
+            </h3>
+            <form onSubmit={handleLogin}>
+              <TextField
+                id="outlined-basic"
+                margin="normal"
+                size="small"
+                type="email"
+                label="Email"
+                variant="outlined"
+                value={email}
+                onChange={handleEmailChange}
+              />
+              <TextField
+                id="outlined-basic"
+                margin="normal"
+                size="small"
+                type="password"
+                label="Contraseña"
+                variant="outlined"
+                value={password}
+                onChange={handlePasswordChange}
+              />
 
-            <Button type="submit" variant="contained">
-              Iniciar sesión
-            </Button>
+              <Button type="submit" variant="contained">
+                Iniciar sesión
+              </Button>
 
-            {errorMessage !== "" && <p>{errorMessage}</p>}
-          </form>
+              {errorMessage !== "" && <p>{errorMessage}</p>}
+            </form>
+          </div>
         </div>
       </div>
     </div>
