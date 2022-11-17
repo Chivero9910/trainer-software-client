@@ -14,7 +14,7 @@ const style = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 800,
+    width: 2200,
     maxHeight: 600,
     bgcolor: "background.paper",
     border: "2px solid #000",
@@ -60,7 +60,7 @@ function ModalGetMetrics(props) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Medidas del cliente</Button>
+      <Button variant="contained" onClick={handleOpen}>Medidas del cliente</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -91,7 +91,7 @@ function ModalGetMetrics(props) {
           return(
 
             <tr>
-          <th>{eachMetric.updatedAt}</th>
+          <th>{new Date(eachMetric.updatedAt).toLocaleDateString()}</th>
           <th>{eachMetric.pesoCorporal}</th>
           <th>{eachMetric.grasaCorporal}</th>
           <th>{eachMetric.cuello}</th>

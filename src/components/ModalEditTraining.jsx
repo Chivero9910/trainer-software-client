@@ -84,9 +84,9 @@ function ModalEditTraining(props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div>
+          <div className="modal-training">
             <form onSubmit={handleUpdateTraining}>
-            <div>
+            
             <TextField
                   id="outlined-basic"
                   margin="normal"
@@ -121,9 +121,6 @@ function ModalEditTraining(props) {
                  <Button type="submit" variant="contained">
                   Actualizar ejercicio
                 </Button>
-
-                
-              </div>
             </form>
             <form onSubmit={handleDeleteTraining}>
             <Button type="submit" variant="contained">

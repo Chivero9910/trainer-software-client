@@ -300,11 +300,13 @@ const getData = async() => {
                 
               </div>
             </form>
+            <div className="button-button">
             <form onSubmit={handleDeleteMetric}>
-            <Button type="submit" variant="contained">
+            <Button type="submit" color="error" variant="contained">
                   Eliminar Rutina
                 </Button>
             </form>
+            </div>
           </div>
         </Box>
       </Modal>

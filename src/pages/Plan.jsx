@@ -24,15 +24,16 @@ function Plan() {
   return (
     <div>
         <NavbarTrainer />
-        <div>
+        <div className="routines-container">
         {list.map((eachRoutine) => {
           return (
-            <div key={eachRoutine._id}>
-              <h3>{eachRoutine.date}</h3>
+            <div className="each-routine" key={eachRoutine._id}>
+              <h3>{new Date(eachRoutine.date).toLocaleDateString() }</h3>
               <h3>{eachRoutine.name}</h3>
+              <p>{eachRoutine.description}</p>
               {eachRoutine.trainings.map((eachTraining) => {
                 return (
-                  <div key={eachTraining._id}>
+                  <div className="eachExercise" key={eachTraining._id}>
                     <iframe
                       width="150"
                       height="80"
@@ -42,8 +43,10 @@ function Plan() {
                       allowFullScreen
                       title="Embedded youtube"
                     />
+                    <div className="each-exercise-details">
                     <h4>{eachTraining.name}</h4>
                     <p>{eachTraining.instructions}</p>
+                    </div>
                   </div>
                 );
               })}

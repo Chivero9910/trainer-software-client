@@ -93,7 +93,7 @@ function ModalAddMetric(props) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Registrar medidas</Button>
+      <Button onClick={handleOpen} variant="contained">Registrar medidas</Button>
       <Modal
         open={open}
         onClose={handleClose}

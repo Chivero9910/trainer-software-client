@@ -1,69 +1,233 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-*{
-    font-family: 'Roboto', sans-serif;
+* {
+  font-family: "Roboto", sans-serif;
 }
 
-#home-main-container{
-    display: flex;
+#home-main-container {
+  display: flex;
 }
 
-#home-container-izq{
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    background-color: #252525;
-    padding-top: 500px;
-    height: 100vh;
-    background-image: url("https://imgur.com/yYUGnxI.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+#home-container-izq {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  background-color: #252525;
+  padding-top: 500px;
+  height: 72vh;
+  background-image: url("https://imgur.com/yYUGnxI.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-#home-container-izq h1{
-    color: white;
-    font-size: 50px;
+#home-container-izq h1 {
+  color: white;
+  font-size: 50px;
 }
 #home-container-izq h1 span {
-    color:orange;
+  color: orange;
 }
 
-#home-container-der{
-    height: 100vh;
-    width: 60%
+#home-container-der {
+  height: 100vh;
+  width: 60%;
 }
 
-#home-modals-button{
+#home-modals-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+}
+
+#container-home-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+#home-form-signin {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 350px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px 1px black;
+  padding: 15px;
+}
+
+#home-form-signin form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+#routines-div {
+  display: flex;
+  flex-direction: row;
+}
+
+#trainingLibrary {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  flex-wrap: wrap;
+}
+#exercisesDiv {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  flex-wrap: wrap;
+}
+
+.form-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+}
+
+.form-home form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-home form select {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#clients-container {
+  margin: 200px;
+}
+
+#clients-container{
     display: flex;
     flex-direction: row;
-    justify-content: end;
-    align-items: center;
+    flex-wrap: wrap;
 }
 
-#container-home-main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-}
-
-#home-form-signin{
-    display: flex;
-    flex-direction: column;
-    width: 600px;
-    height: 350px;
-    text-align: center;
-    justify-content: center;
+.client-card {
     border-radius: 5px;
     box-shadow: 2px 2px 5px 1px black;
-    padding: 15px;
-    
+    padding: 35px;
+    margin: 15px;
+    text-align: center;
+    width: 250px;
 }
 
-#home-form-signin form{
+.client-card a {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#modals-routine{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 15px;
+}
+
+.routines-container{
+    margin: 20px;
+    overflow-y: scroll;
+    width: 100vw;
+}
+
+.each-routine{
     display: flex;
     flex-direction: column;
-    text-align: left;
+    min-width: 500px;
+    background-color: rgb(233, 233, 233);
+    margin: 15px;
+    padding: 40px;
+}
+
+.routines-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.eachExercise{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: solid 2px black;
+    margin-right: 45px;
+}
+
+.each-exercise-details{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    justify-content: center;
+}
+
+.each-exercise-details h4{
+    margin-bottom: -10px;
+}
+
+table{
+    table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid black;
+}
+
+tr{
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid black;
+}
+
+th{
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid black;
+}
+
+.routines-container-exercise{
+    margin: 20px;
+    flex-wrap: wrap;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.each-training{
+    display: flex;
+    flex-direction: column;
+    min-width: fit-content;
+    background-color: rgb(233, 233, 233);
+    margin: 15px;
+    padding: 40px;
+    text-align: center;
+}
+
+.container-table{
+    margin: 20px;
+}
+
+.routine-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.routine-form button{
+    margin: 15px;
 }
 
 #routines-div{
@@ -71,31 +235,56 @@
     flex-direction: row;
 }
 
+#exercises-div-routine{
+    display: flex;
+    flex-direction: column;
+    border: solid 2px black;
+    width: 50%;
+}
+
+.exercises-routine{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px;
+    
+}
+
+.names-forms{
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    
+}
+
 #trainingLibrary{
     display: flex;
     flex-direction: row;
-    width: 50%;
     flex-wrap: wrap;
-}
-#exercisesDiv{
-    display: flex;
-    flex-direction: row;
-    width: 50%;
-    flex-wrap: wrap;
+    border: solid 2px black;
 }
 
-.form-home{
+.each-exercise-routine{
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+}
+
+.description #outlined-basic{
+
+    margin-left: 1200px !important;
+}
+
+.modal-training{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
 }
 
-.form-home form{
-    display: flex;
-    flex-direction: column;
+.modal-training button{
+    margin-left: 10px !important;
 }
 
-.form-home form input{
-    margin: 15px;
+.button-button{
+    margin-top: 10px;
 }

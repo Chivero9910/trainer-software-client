@@ -57,9 +57,9 @@ function ModalTraining(props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div>
+          <div >
             <form onSubmit={handleUpdateTraining}>
-            <div>
+            <div className="modal-training">
             <TextField
                   id="outlined-basic"
                   margin="normal"

@@ -26,11 +26,14 @@ function Exercises() {
   return (
     <div>
       <NavbarTrainer />
+      <div id="modals-routine">
       <ModalTraining trainingData={getData}/>
-      <div>
+      </div>
+      <div className="routines-container-exercise">
+    
         {list.map((eachTraining) => {
           return (
-            <div key={eachTraining._id}>
+            <div className="each-training" key={eachTraining._id}>
             <iframe
       width="250"
       height="150"
@@ -48,6 +51,7 @@ function Exercises() {
         })}
       </div>
     </div>
+
   );
 }
 

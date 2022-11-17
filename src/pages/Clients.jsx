@@ -27,16 +27,18 @@ function Clients() {
   return (
     <div>
         <NavbarTrainer />
-        <div>
+
+        <div id="clients-container">
           {list.map((eachUser) => {
             return(
-              <div>
+              <div className="client-card">
                 <Link to={`/clients/${eachUser._id}/planificacion`}>{`${eachUser.name} ${eachUser.lastName}`}</Link>
 
               </div>
             )
           })}
         </div>
+      
 
     </div>
   )

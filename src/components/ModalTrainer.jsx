@@ -81,10 +81,11 @@ function ModalTrainer() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div>
+          <div className="form-home">
             <h2>Regístrate</h2>
             <div>
               <form onSubmit={handleSignup}>
+              
                 <TextField
                   id="outlined-basic"
                   margin="normal"
@@ -95,7 +96,7 @@ function ModalTrainer() {
                   value={businessName}
                   onChange={handleBusinessChange}
                 />
-
+                <div>
                 <TextField
                   id="outlined-basic"
                   margin="normal"
@@ -116,7 +117,8 @@ function ModalTrainer() {
                   value={password}
                   onChange={handlePasswordChange}
                 />
-
+                </div>
+                <div>
                 <TextField
                   id="outlined-basic"
                   margin="normal"
@@ -138,7 +140,8 @@ function ModalTrainer() {
                   value={lastName}
                   onChange={handleLastNameChange}
                 />
-
+                </div>
+                <div>
                 <TextField
                   id="outlined-basic"
                   margin="normal"
@@ -159,6 +162,7 @@ function ModalTrainer() {
                   value={phoneNumber}
                   onChange={handlePhoneNumberChange}
                 />
+                </div>
 
                 <Button type="submit" variant="contained">
                   Regístrate
