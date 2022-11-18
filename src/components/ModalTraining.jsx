@@ -42,6 +42,9 @@ function ModalTraining(props) {
         await createTrainingService(newTraining)
         setOpen(false)
         props.trainingData()
+        setName("")
+        setInstructions("")
+        setVideoUrl("")
     } catch (error) {
         console.log(error)
     }

@@ -74,6 +74,9 @@ export default function ModalAddRoutine(props) {
       await createRoutineService(newRoutine, props.id);
       setOpen(false);
       props.dataRoutine();
+      setName("")
+      setDescription("")
+      setDate("")
     } catch (error) {
       console.log(error);
     }
